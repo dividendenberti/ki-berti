@@ -3,194 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Process Force AI - Die KI-Kraft hinter euren Prozessen</title>
+    <title>Smart Work with AI – KI-Beratung aus Österreich</title>
+    <meta name="description" content="KI-Beratung trifft Umsetzungsstärke. n8n & Odoo Experten für Versicherung & Handel.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --color-bg: #0a0e1a;
-            --color-surface: #151923;
-            --color-primary: #667eea;
-            --color-accent: #4fd1c5;
-            --color-text: #e2e8f0;
-            --color-text-dim: #94a3b8;
-            --color-border: #1e293b;
-            --font-display: 'DM Sans', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --noir: #0d0d0d;
+            --charcoal: #1a1a1a;
+            --steel: #2d2d2d;
+            --silver: #e0e0e0;
+            --white: #fafafa;
+            --volt: #00ff88;
+            --volt-dim: #00ff8833;
+            --magenta: #ff0066;
+            --cyan: #00ddff;
+        }
+
         body {
-            font-family: var(--font-display);
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.6;
+            font-family: 'Archivo', -apple-system, sans-serif;
+            background: var(--noir);
+            color: var(--white);
+            line-height: 1.5;
             overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        .gear {
-            position: absolute;
-            border: 2px solid var(--color-primary);
-            border-radius: 50%;
-            animation: rotate 20s linear infinite;
-        }
-
-        .gear:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 5%;
-            animation-duration: 25s;
-        }
-
-        .gear:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            top: 60%;
-            right: 10%;
-            animation-duration: 18s;
-            animation-direction: reverse;
-        }
-
-        .gear:nth-child(3) {
-            width: 150px;
-            height: 150px;
-            bottom: 10%;
-            left: 40%;
-            animation-duration: 22s;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         /* Navigation */
         nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            padding: 1.5rem 3rem;
-            background: rgba(10, 14, 26, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-border);
+            left: 0;
+            right: 0;
             z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.25rem;
+        .logo-mark {
+            font-family: 'JetBrains Mono', monospace;
             font-weight: 700;
-            color: var(--color-text);
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            color: var(--volt);
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--color-text-dim);
+            color: var(--silver);
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
             transition: color 0.3s;
             position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
+        .nav-links a::before {
+            content: '→';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-primary);
-            transition: width 0.3s;
+            left: -20px;
+            opacity: 0;
+            color: var(--volt);
+            transition: all 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--color-text);
+            color: var(--volt);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover::before {
+            opacity: 1;
+            left: -25px;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
+            position: relative;
             padding: 8rem 3rem 4rem;
-            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, transparent 0%, var(--charcoal) 100%),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0, 255, 136, 0.03) 0px,
+                    transparent 1px,
+                    transparent 80px,
+                    rgba(0, 255, 136, 0.03) 81px
+                );
+            animation: scan 20s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(80px); }
         }
 
         .hero-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            width: 100%;
+            position: relative;
+            z-index: 10;
         }
 
-        .hero-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(102, 126, 234, 0.1);
-            border: 1px solid var(--color-primary);
-            border-radius: 50px;
-            color: var(--color-primary);
+        .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            font-weight: 600;
+            color: var(--volt);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
             margin-bottom: 2rem;
-            font-family: var(--font-mono);
-            animation: fadeInUp 0.8s ease-out;
+            font-weight: 700;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -198,369 +164,455 @@
             }
         }
 
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+        h1 {
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.8s ease-out 0.2s both;
         }
 
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        h1 .highlight {
+            color: var(--volt);
+            position: relative;
+            display: inline-block;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--color-text-dim);
+        h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0.1em;
+            left: 0;
+            right: 0;
+            height: 0.15em;
+            background: var(--volt);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: underlineGrow 1.2s ease-out 1s forwards;
+        }
+
+        @keyframes underlineGrow {
+            to { transform: scaleX(1); }
+        }
+
+        .lead {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--silver);
+            max-width: 800px;
+            line-height: 1.6;
             margin-bottom: 3rem;
-            max-width: 600px;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+            animation: fadeIn 0.8s ease-out 0.4s both;
         }
 
-        .hero-cta {
+        .cta-group {
             display: flex;
             gap: 1.5rem;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
+            flex-wrap: wrap;
+            animation: fadeIn 0.8s ease-out 0.6s both;
         }
 
         .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border-color: var(--color-border);
-            color: var(--color-text);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--color-primary);
-            background: rgba(102, 126, 234, 0.1);
-        }
-
-        /* Services Section */
-        .section {
-            position: relative;
-            padding: 6rem 3rem;
-            z-index: 1;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-tag {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(79, 209, 197, 0.1);
-            border: 1px solid var(--color-accent);
-            border-radius: 50px;
-            color: var(--color-accent);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-family: var(--font-mono);
-        }
-
-        .section-title {
-            font-size: 3rem;
+            padding: 1.2rem 2.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--color-text-dim);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Service Cards */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 2px solid;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
-        .service-card::before {
+        .btn-primary {
+            background: var(--volt);
+            border-color: var(--volt);
+            color: var(--noir);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--silver);
+            color: var(--silver);
+        }
+
+        .btn-secondary:hover {
+            background: var(--steel);
+            border-color: var(--volt);
+            color: var(--volt);
+            transform: translateY(-2px);
+        }
+
+        /* Stats bar */
+        .stats {
+            background: var(--charcoal);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+        }
+
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--volt);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Services */
+        .services {
+            padding: 8rem 3rem;
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--silver);
+            max-width: 700px;
+        }
+
+        .service-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service {
+            background: var(--charcoal);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        .service::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-            transform: scaleX(0);
-            transition: transform 0.3s;
+            width: 4px;
+            height: 0;
+            background: var(--volt);
+            transition: height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--color-primary);
+        .service:hover {
+            transform: translateX(10px);
+            border-color: rgba(0, 255, 136, 0.2);
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
+        .service:hover::before {
+            height: 100%;
         }
 
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .service-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--volt);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .service h3 {
             font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .service p {
+            color: var(--silver);
+            line-height: 1.7;
             margin-bottom: 1.5rem;
         }
 
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .service-card p {
-            color: var(--color-text-dim);
-            line-height: 1.7;
-        }
-
-        /* Technologies Section */
         .tech-stack {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
         }
 
-        .tech-item {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
+        .tech-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--volt);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            font-weight: 700;
         }
 
-        .tech-item:hover {
-            border-color: var(--color-primary);
-            transform: translateY(-3px);
-        }
-
-        .tech-logo {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tech-item p {
-            color: var(--color-text-dim);
-            font-size: 0.95rem;
-        }
-
-        /* Industries Section */
-        .industries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .industry-card {
-            background: linear-gradient(135deg, var(--color-surface) 0%, rgba(102, 126, 234, 0.05) 100%);
-            border: 1px solid var(--color-border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s;
-        }
-
-        .industry-card:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(79, 209, 197, 0.1);
-        }
-
-        .industry-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .industry-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .industry-card ul {
-            list-style: none;
-            color: var(--color-text-dim);
-        }
-
-        .industry-card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+        /* Expertise */
+        .expertise {
+            padding: 8rem 3rem;
+            background: var(--charcoal);
             position: relative;
         }
 
-        .industry-card li::before {
-            content: '→';
+        .expertise::before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
-            color: var(--color-accent);
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--volt), 
+                transparent
+            );
         }
 
-        /* Features Section */
-        .features-list {
+        .expertise-grid {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 4rem;
         }
 
-        .feature-item {
-            display: flex;
-            gap: 1.5rem;
-            padding: 2rem;
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            transition: all 0.3s;
+        .expertise-item {
+            padding: 3rem;
+            background: var(--noir);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-item:hover {
-            border-color: var(--color-primary);
+        .expertise-item::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 60px 60px 0;
+            border-color: transparent var(--volt) transparent transparent;
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
-        .feature-icon {
-            flex-shrink: 0;
-            width: 50px;
-            height: 50px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+        .expertise-item:hover::after {
+            opacity: 1;
         }
 
-        .feature-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        .expertise-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
-        .feature-content p {
-            color: var(--color-text-dim);
-            font-size: 0.95rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(79, 209, 197, 0.1));
-            border: 1px solid var(--color-border);
-            border-radius: 20px;
-            padding: 4rem 3rem;
-            text-align: center;
-            margin: 4rem 0;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
+        .expertise-item h3 {
+            font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
-        .cta-section p {
-            font-size: 1.2rem;
-            color: var(--color-text-dim);
+        .expertise-item p {
+            color: var(--silver);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Process */
+        .process {
+            padding: 8rem 3rem;
+            background: var(--noir);
+        }
+
+        .process-steps {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--volt);
+            line-height: 1;
+            min-width: 100px;
+        }
+
+        .step-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .step-content p {
+            color: var(--silver);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 10rem 3rem;
+            background: var(--charcoal);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1), transparent 70%);
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta h2 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
             margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta p {
+            font-size: 1.5rem;
+            color: var(--silver);
+            margin-bottom: 3rem;
         }
 
         .contact-info {
             display: flex;
+            gap: 2rem;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
             flex-wrap: wrap;
+            margin-top: 3rem;
         }
 
         .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--color-text);
-            font-family: var(--font-mono);
-            font-size: 1rem;
-        }
-
-        .contact-item a {
-            color: var(--color-accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--volt);
             text-decoration: none;
-            transition: color 0.3s;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.3s;
         }
 
-        .contact-item a:hover {
-            color: var(--color-primary);
+        .contact-item:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-2px);
         }
 
         /* Footer */
         footer {
-            position: relative;
-            padding: 3rem 3rem 2rem;
-            border-top: 1px solid var(--color-border);
-            text-align: center;
-            z-index: 1;
+            background: var(--noir);
+            padding: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        footer p {
-            color: var(--color-text-dim);
-            font-size: 0.95rem;
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--volt);
+        }
+
+        .footer-text {
+            color: var(--silver);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
+            .nav-inner {
+                padding: 1.5rem;
             }
 
             .nav-links {
@@ -568,351 +620,378 @@
             }
 
             .hero {
-                padding: 6rem 1.5rem 3rem;
+                padding: 6rem 1.5rem 4rem;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            h1 {
+                font-size: 3rem;
             }
 
-            .hero-subtitle {
+            .lead {
                 font-size: 1.1rem;
             }
 
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .section {
+            .services, .expertise, .process, .cta {
                 padding: 4rem 1.5rem;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .service-grid {
+                grid-template-columns: 1fr;
             }
 
-            .features-list {
-                grid-template-columns: 1fr;
+            .step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .step-number {
+                font-size: 3rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
             }
 
             .contact-info {
                 flex-direction: column;
-                gap: 1.5rem;
+            }
+
+            .contact-item {
+                width: 100%;
+                text-align: center;
             }
         }
 
-        /* Scroll animations */
-        .animate-on-scroll {
+        /* Scroll reveal */
+        .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .animate-on-scroll.visible {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="bg-animation">
-        <div class="gear"></div>
-        <div class="gear"></div>
-        <div class="gear"></div>
-    </div>
-
-    <!-- Navigation -->
     <nav>
-        <div class="logo">
-            <div class="logo-icon">⚙️</div>
-            <span><strong>PROCESS FORCE</strong> <span style="color: var(--color-primary);">AI</span></span>
+        <div class="nav-inner">
+            <div class="logo-mark">SWAI</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#process">Vorgehen</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li><a href="#services">Leistungen</a></li>
-            <li><a href="#technologies">Technologien</a></li>
-            <li><a href="#industries">Branchen</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-        </ul>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">B3 — DIREKTESTE AUSSAGE</div>
+            <div class="eyebrow">// KI-Beratung × Umsetzung</div>
             <h1>
-                <span class="gradient-text">Process Force AI</span><br>
-                Die KI-Kraft hinter<br>euren Prozessen
+                Wir machen<br>
+                <span class="highlight">KI nutzbar</span>
             </h1>
-            <p class="hero-subtitle">
-                Wir automatisieren Ihre Geschäftsprozesse mit n8n und Odoo – 
-                die KI-gestützte Einsatztruppe für maximale Effizienz.
+            <p class="lead">
+                Keine Powerpoints. Keine Buzzwords. Wir sind zwei KI-Berater mit einem klaren Fokus: 
+                Umsetzung. Von der Strategie bis zum laufenden System – mit n8n, Odoo und jahrelanger 
+                Erfahrung in Versicherung und Handel.
             </p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">Beratung anfragen</a>
-                <a href="#services" class="btn btn-secondary">Mehr erfahren</a>
+            <div class="cta-group">
+                <a href="#kontakt" class="btn btn-primary">Projekt starten</a>
+                <a href="#services" class="btn btn-secondary">Was wir tun</a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">UNSERE LEISTUNGEN</span>
-                <h2 class="section-title">Was wir für Sie tun</h2>
-                <p class="section-subtitle">
-                    Spezialisiert auf Automatisierung und Integration – 
-                    damit Sie sich auf Ihr Kerngeschäft konzentrieren können.
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-value">2</div>
+                <div class="stat-label">KI-Berater</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">10+</div>
+                <div class="stat-label">Jahre Erfahrung</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Umsetzungsfokus</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">AT</div>
+                <div class="stat-label">Made in Austria</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="section-header reveal">
+            <h2 class="section-title">Was wir tun</h2>
+            <p class="section-subtitle">
+                Von der Idee zur produktiven Lösung. Wir begleiten euch durch den gesamten Prozess.
+            </p>
+        </div>
+        
+        <div class="service-grid">
+            <div class="service reveal">
+                <div class="service-number">01</div>
+                <h3>KI-Strategie</h3>
+                <p>
+                    Gemeinsam identifizieren wir die Use Cases mit dem größten Impact. 
+                    Keine theoretischen Konzepte – wir fokussieren auf das, was wirklich 
+                    umsetzbar ist und Mehrwert bringt.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Workshop</span>
+                    <span class="tech-badge">ROI-Analyse</span>
+                    <span class="tech-badge">Roadmap</span>
+                </div>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-number">02</div>
+                <h3>Workflow-Automatisierung</h3>
+                <p>
+                    Mit n8n bauen wir intelligente Workflows, die eure Systeme verbinden. 
+                    Von einfachen Integrationen bis zu komplexen Multi-Step-Prozessen mit 
+                    KI-Integration.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">n8n</span>
+                    <span class="tech-badge">API</span>
+                    <span class="tech-badge">Integration</span>
+                </div>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-number">03</div>
+                <h3>Odoo Implementation</h3>
+                <p>
+                    ERP und CRM, das zu euch passt. Wir konfigurieren, customizen und 
+                    integrieren Odoo so, dass es eure Prozesse optimal unterstützt.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Odoo</span>
+                    <span class="tech-badge">ERP</span>
+                    <span class="tech-badge">CRM</span>
+                </div>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-number">04</div>
+                <h3>Custom KI-Lösungen</h3>
+                <p>
+                    RAG-Systeme, Custom Chatbots, Dokumentenverarbeitung – wir bauen 
+                    maßgeschneiderte KI-Lösungen, die auf eure spezifischen Anforderungen 
+                    zugeschnitten sind.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">LLMs</span>
+                    <span class="tech-badge">RAG</span>
+                    <span class="tech-badge">Vector DB</span>
+                </div>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-number">05</div>
+                <h3>Training & Support</h3>
+                <p>
+                    Wir bringen euer Team auf Speed. Hands-on Trainings, Dokumentation 
+                    und kontinuierlicher Support – auch nach dem Go-Live.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Training</span>
+                    <span class="tech-badge">Docs</span>
+                    <span class="tech-badge">Support</span>
+                </div>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-number">06</div>
+                <h3>Maintenance & Evolution</h3>
+                <p>
+                    KI entwickelt sich schnell. Wir stellen sicher, dass eure Lösungen 
+                    aktuell bleiben und mit neuen Möglichkeiten wachsen.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Updates</span>
+                    <span class="tech-badge">Optimization</span>
+                    <span class="tech-badge">Evolution</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="expertise">
+        <div class="section-header reveal">
+            <h2 class="section-title">Unsere Expertise</h2>
+            <p class="section-subtitle">
+                Jahrelange Erfahrung in Schlüsselbranchen kombiniert mit 
+                modernsten KI-Technologien.
+            </p>
+        </div>
+
+        <div class="expertise-grid">
+            <div class="expertise-item reveal">
+                <span class="expertise-icon">🏛️</span>
+                <h3>Versicherung</h3>
+                <p>
+                    Tiefes Verständnis für Versicherungsprozesse, Compliance-Anforderungen 
+                    und Kundenservice. Wir kennen die Herausforderungen der Branche aus 
+                    erster Hand und wissen, wo KI echten Mehrwert schaffen kann.
                 </p>
             </div>
 
-            <div class="services-grid">
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">⚡</div>
-                    <h3>Prozessoptimierung</h3>
-                    <p>
-                        Analyse und Optimierung Ihrer bestehenden Prozesse. 
-                        Wir identifizieren Engpässe und implementieren 
-                        effiziente Automatisierungslösungen.
-                    </p>
-                </div>
-
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">🔄</div>
-                    <h3>n8n Workflows</h3>
-                    <p>
-                        Entwicklung maßgeschneiderter Workflow-Automatisierungen 
-                        mit n8n. Von einfachen Integrationen bis zu komplexen, 
-                        KI-gestützten Prozessen.
-                    </p>
-                </div>
-
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">📊</div>
-                    <h3>Odoo ERP Integration</h3>
-                    <p>
-                        Implementierung und Anpassung von Odoo für Ihr Unternehmen. 
-                        Vollständige Integration aller Geschäftsbereiche in einer Plattform.
-                    </p>
-                </div>
-
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">🤖</div>
-                    <h3>KI-Automatisierung</h3>
-                    <p>
-                        Integration von KI-Modellen in Ihre Workflows. 
-                        Automatische Dokumentenverarbeitung, Datenanalyse 
-                        und intelligente Entscheidungsfindung.
-                    </p>
-                </div>
-
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">🔗</div>
-                    <h3>API-Integrationen</h3>
-                    <p>
-                        Nahtlose Verbindung Ihrer bestehenden Tools und Systeme. 
-                        Wir schaffen eine einheitliche Datenlandschaft für Ihr Unternehmen.
-                    </p>
-                </div>
-
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">⏱️</div>
-                    <h3>Zeitersparnis</h3>
-                    <p>
-                        Reduktion manueller Tätigkeiten um bis zu 80%. 
-                        Ihre Mitarbeiter können sich auf wertschöpfende 
-                        Aufgaben konzentrieren.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technologies Section -->
-    <section id="technologies" class="section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">TECHNOLOGIE-STACK</span>
-                <h2 class="section-title">Unsere Werkzeuge</h2>
-                <p class="section-subtitle">
-                    Wir arbeiten mit den besten Tools für moderne Prozessautomatisierung
+            <div class="expertise-item reveal">
+                <span class="expertise-icon">🛒</span>
+                <h3>Handel</h3>
+                <p>
+                    E-Commerce, Retail, Logistik – wir verstehen die Komplexität moderner 
+                    Handelsunternehmen. Von der Bestandsverwaltung bis zur Customer Journey: 
+                    Wir automatisieren, wo es Sinn macht.
                 </p>
             </div>
 
-            <div class="tech-stack">
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-logo">🔀</div>
-                    <h4>n8n</h4>
-                    <p>Fair-code Workflow-Automatisierung mit 400+ Integrationen</p>
-                </div>
-
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-logo">📦</div>
-                    <h4>Odoo</h4>
-                    <p>All-in-One ERP-System für alle Geschäftsbereiche</p>
-                </div>
-
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-logo">🧠</div>
-                    <h4>OpenAI / Claude</h4>
-                    <p>KI-Integration für intelligente Automatisierung</p>
-                </div>
-
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-logo">🗄️</div>
-                    <h4>PostgreSQL</h4>
-                    <p>Robuste Datenbank für zuverlässige Datenhaltung</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Industries Section -->
-    <section id="industries" class="section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">UNSERE BRANCHEN</span>
-                <h2 class="section-title">Bewährte Expertise</h2>
-                <p class="section-subtitle">
-                    Erfolgreiche Projekte in verschiedenen Branchen
+            <div class="expertise-item reveal">
+                <span class="expertise-icon">⚙️</span>
+                <h3>n8n Expertise</h3>
+                <p>
+                    Workflow-Automatisierung ist unsere Kernkompetenz. Mit n8n verbinden 
+                    wir eure Systeme, automatisieren repetitive Aufgaben und integrieren 
+                    KI nahtlos in bestehende Prozesse.
                 </p>
             </div>
 
-            <div class="industries-grid">
-                <div class="industry-card animate-on-scroll">
-                    <div class="industry-icon">🏦</div>
-                    <h3>Versicherungen</h3>
-                    <ul>
-                        <li>Automatisierte Schadenbearbeitung</li>
-                        <li>Dokumentenmanagement</li>
-                        <li>Kundenportal-Integrationen</li>
-                        <li>Compliance-Workflows</li>
-                    </ul>
-                </div>
+            <div class="expertise-item reveal">
+                <span class="expertise-icon">📊</span>
+                <h3>Odoo Mastery</h3>
+                <p>
+                    Als Odoo-Spezialisten implementieren wir ERP und CRM-Lösungen, 
+                    die perfekt auf eure Bedürfnisse abgestimmt sind. Von der Installation 
+                    bis zur individuellen Anpassung.
+                </p>
+            </div>
+        </div>
+    </section>
 
-                <div class="industry-card animate-on-scroll">
-                    <div class="industry-icon">🛒</div>
-                    <h3>Handel</h3>
-                    <ul>
-                        <li>E-Commerce-Automatisierung</li>
-                        <li>Lagerverwaltung</li>
-                        <li>Bestellabwicklung</li>
-                        <li>Multi-Channel-Integration</li>
-                    </ul>
-                </div>
+    <section id="process" class="process">
+        <div class="section-header reveal">
+            <h2 class="section-title">Unser Vorgehen</h2>
+            <p class="section-subtitle">
+                Strukturiert, pragmatisch, ergebnisorientiert.
+            </p>
+        </div>
 
-                <div class="industry-card animate-on-scroll">
-                    <div class="industry-icon">💼</div>
-                    <h3>Weitere Branchen</h3>
-                    <ul>
-                        <li>Dienstleistungen</li>
-                        <li>Produktion</li>
-                        <li>Healthcare</li>
-                        <li>Logistik</li>
-                    </ul>
+        <div class="process-steps">
+            <div class="step reveal">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Discovery</h3>
+                    <p>
+                        Wir verstehen euer Business, eure Prozesse und eure Ziele. 
+                        In Workshops identifizieren wir gemeinsam die vielversprechendsten 
+                        Use Cases und priorisieren nach Impact.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step reveal">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Proof of Concept</h3>
+                    <p>
+                        Wir bauen schnell einen funktionierenden Prototyp. So könnt ihr 
+                        frühzeitig sehen, wie die Lösung aussieht und funktioniert – 
+                        und wir können gemeinsam iterieren.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step reveal">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Implementation</h3>
+                    <p>
+                        Wir setzen die finale Lösung um – robust, skalierbar und 
+                        integriert in eure bestehende Infrastruktur. Mit Testing, 
+                        Dokumentation und allem, was dazugehört.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step reveal">
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <h3>Go-Live & Support</h3>
+                    <p>
+                        Wir begleiten euch beim Rollout, schulen euer Team und bleiben 
+                        auch nach dem Go-Live an eurer Seite. Langfristige Partnerschaft 
+                        statt einmaliges Projekt.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">VORTEILE</span>
-                <h2 class="section-title">Warum Process Force AI?</h2>
+    <section id="kontakt" class="cta">
+        <div class="cta-content">
+            <h2>Bereit loszulegen?</h2>
+            <p>
+                Lass uns reden. Unverbindlich, direkt, ehrlich.
+            </p>
+            <div class="cta-group">
+                <a href="mailto:hallo@smartworkwithai.at" class="btn btn-primary">
+                    Projekt anfragen
+                </a>
             </div>
-
-            <div class="features-list">
-                <div class="feature-item animate-on-scroll">
-                    <div class="feature-icon">💰</div>
-                    <div class="feature-content">
-                        <h4>Kostenreduktion</h4>
-                        <p>Senken Sie Betriebskosten durch Automatisierung wiederkehrender Aufgaben</p>
-                    </div>
-                </div>
-
-                <div class="feature-item animate-on-scroll">
-                    <div class="feature-icon">🎯</div>
-                    <div class="feature-content">
-                        <h4>Höhere Genauigkeit</h4>
-                        <p>Minimieren Sie Fehler durch automatisierte, standardisierte Prozesse</p>
-                    </div>
-                </div>
-
-                <div class="feature-item animate-on-scroll">
-                    <div class="feature-icon">📈</div>
-                    <div class="feature-content">
-                        <h4>Skalierbarkeit</h4>
-                        <p>Wachsen Sie ohne proportional steigende Personalkosten</p>
-                    </div>
-                </div>
-
-                <div class="feature-item animate-on-scroll">
-                    <div class="feature-icon">🔒</div>
-                    <div class="feature-content">
-                        <h4>Datensicherheit</h4>
-                        <p>DSGVO-konforme Lösungen mit höchsten Sicherheitsstandards</p>
-                    </div>
-                </div>
+            <div class="contact-info">
+                <a href="mailto:hallo@smartworkwithai.at" class="contact-item">
+                    hallo@smartworkwithai.at
+                </a>
+                <a href="https://smartworkwithai.at" class="contact-item">
+                    smartworkwithai.at
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="cta-section animate-on-scroll">
-                <h2>Bereit für die Automatisierung?</h2>
-                <p>Lassen Sie uns gemeinsam Ihre Prozesse auf das nächste Level bringen.</p>
-                <div class="hero-cta" style="justify-content: center; margin-top: 2rem;">
-                    <a href="mailto:info@processforceai.com" class="btn btn-primary">Kontakt aufnehmen</a>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span>🌐</span>
-                        <a href="https://processforceai.com">processforceai.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>🇦🇹</span>
-                        <a href="https://processforceai.at">processforceai.at</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Process Force AI. Die KI-gestützte Einsatztruppe für eure Prozesse.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem;">
-                Mechanik, Präzision und Bewegung – für maximale Effizienz
-            </p>
+        <div class="footer-content">
+            <div class="footer-logo">SMART WORK WITH AI</div>
+            <div class="footer-text">
+                © 2025 — Made in Austria 🇦🇹
+            </div>
         </div>
     </footer>
 
     <script>
-        // Scroll Animation Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // Scroll reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
                 }
             });
-        }, observerOptions);
+        };
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
 
-        // Smooth scrolling for navigation links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
