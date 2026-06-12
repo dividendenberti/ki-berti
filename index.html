@@ -1,1009 +1,506 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Work with AI – KI-Beratung aus Österreich</title>
-    <meta name="description" content="KI-Beratung trifft Umsetzungsstärke. n8n & Odoo Experten für Versicherung & Handel.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --noir: #0d0d0d;
-            --charcoal: #1a1a1a;
-            --steel: #2d2d2d;
-            --silver: #e0e0e0;
-            --white: #fafafa;
-            --volt: #00ff88;
-            --volt-dim: #00ff8833;
-            --magenta: #ff0066;
-            --cyan: #00ddff;
-        }
-
-        body {
-            font-family: 'Archivo', -apple-system, sans-serif;
-            background: var(--noir);
-            color: var(--white);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-inner {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 1.5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-mark {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.02em;
-            color: var(--volt);
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--silver);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::before {
-            content: '→';
-            position: absolute;
-            left: -20px;
-            opacity: 0;
-            color: var(--volt);
-            transition: all 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--volt);
-        }
-
-        .nav-links a:hover::before {
-            opacity: 1;
-            left: -25px;
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 8rem 3rem 4rem;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(135deg, transparent 0%, var(--charcoal) 100%),
-                repeating-linear-gradient(
-                    90deg,
-                    rgba(0, 255, 136, 0.03) 0px,
-                    transparent 1px,
-                    transparent 80px,
-                    rgba(0, 255, 136, 0.03) 81px
-                );
-            animation: scan 20s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(80px); }
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-        }
-
-        .eyebrow {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--volt);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-size: clamp(3.5rem, 10vw, 8rem);
-            font-weight: 900;
-            line-height: 0.95;
-            letter-spacing: -0.03em;
-            margin-bottom: 2rem;
-            animation: fadeIn 0.8s ease-out 0.2s both;
-        }
-
-        h1 .highlight {
-            color: var(--volt);
-            position: relative;
-            display: inline-block;
-        }
-
-        h1 .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 0.1em;
-            left: 0;
-            right: 0;
-            height: 0.15em;
-            background: var(--volt);
-            transform: scaleX(0);
-            transform-origin: left;
-            animation: underlineGrow 1.2s ease-out 1s forwards;
-        }
-
-        @keyframes underlineGrow {
-            to { transform: scaleX(1); }
-        }
-
-        .lead {
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: var(--silver);
-            max-width: 800px;
-            line-height: 1.6;
-            margin-bottom: 3rem;
-            animation: fadeIn 0.8s ease-out 0.4s both;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            animation: fadeIn 0.8s ease-out 0.6s both;
-        }
-
-        .btn {
-            padding: 1.2rem 2.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border: 2px solid;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--volt);
-            border-color: var(--volt);
-            color: var(--noir);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--white);
-            transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            z-index: -1;
-        }
-
-        .btn-primary:hover::before {
-            left: 0;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border-color: var(--silver);
-            color: var(--silver);
-        }
-
-        .btn-secondary:hover {
-            background: var(--steel);
-            border-color: var(--volt);
-            color: var(--volt);
-            transform: translateY(-2px);
-        }
-
-        /* Stats bar */
-        .stats {
-            background: var(--charcoal);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-        }
-
-        .stats-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--volt);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--silver);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* Services */
-        .services {
-            padding: 8rem 3rem;
-            position: relative;
-        }
-
-        .section-header {
-            max-width: 1400px;
-            margin: 0 auto 5rem;
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.3rem;
-            color: var(--silver);
-            max-width: 700px;
-        }
-
-        .service-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .service {
-            background: var(--charcoal);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-        }
-
-        .service::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: var(--volt);
-            transition: height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .service:hover {
-            transform: translateX(10px);
-            border-color: rgba(0, 255, 136, 0.2);
-        }
-
-        .service:hover::before {
-            height: 100%;
-        }
-
-        .service-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--volt);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .service h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.01em;
-        }
-
-        .service p {
-            color: var(--silver);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-stack {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tech-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            padding: 0.4rem 0.8rem;
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--volt);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            font-weight: 700;
-        }
-
-        /* Expertise */
-        .expertise {
-            padding: 8rem 3rem;
-            background: var(--charcoal);
-            position: relative;
-        }
-
-        .expertise::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                var(--volt), 
-                transparent
-            );
-        }
-
-        .expertise-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4rem;
-        }
-
-        .expertise-item {
-            padding: 3rem;
-            background: var(--noir);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .expertise-item::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 60px 60px 0;
-            border-color: transparent var(--volt) transparent transparent;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .expertise-item:hover::after {
-            opacity: 1;
-        }
-
-        .expertise-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .expertise-item h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .expertise-item p {
-            color: var(--silver);
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        /* Process */
-        .process {
-            padding: 8rem 3rem;
-            background: var(--noir);
-        }
-
-        .process-steps {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .step {
-            display: flex;
-            gap: 3rem;
-            margin-bottom: 4rem;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--volt);
-            line-height: 1;
-            min-width: 100px;
-        }
-
-        .step-content h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .step-content p {
-            color: var(--silver);
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        /* CTA */
-        .cta {
-            padding: 10rem 3rem;
-            background: var(--charcoal);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.1), transparent 70%);
-            transform: translate(-50%, -50%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        .cta-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-        }
-
-        .cta h2 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 900;
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-        }
-
-        .cta p {
-            font-size: 1.5rem;
-            color: var(--silver);
-            margin-bottom: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
-            color: var(--volt);
-            text-decoration: none;
-            padding: 1rem 2rem;
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            transition: all 0.3s;
-        }
-
-        .contact-item:hover {
-            background: rgba(0, 255, 136, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--noir);
-            padding: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .footer-logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            color: var(--volt);
-        }
-
-        .footer-text {
-            color: var(--silver);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .expertise-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-inner {
-                padding: 1.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 6rem 1.5rem 4rem;
-            }
-
-            h1 {
-                font-size: 3rem;
-            }
-
-            .lead {
-                font-size: 1.1rem;
-            }
-
-            .services, .expertise, .process, .cta {
-                padding: 4rem 1.5rem;
-            }
-
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .step {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .step-number {
-                font-size: 3rem;
-            }
-
-            .cta-group {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .contact-info {
-                flex-direction: column;
-            }
-
-            .contact-item {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robert Bartonek – RB Consulting | DRTV & Infomercial Expert</title>
+  <meta name="description" content="30+ years of DRTV, teleshopping, and infomercial expertise. Robert Bartonek helps companies bring products to market across Europe and worldwide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0D1B2A;
+      --cream:  #F2EDE6;
+      --gold:   #B89B5E;
+      --gold-lt:#D4B97A;
+      --grey:   #6B7280;
+      --white:  #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5vw;
+      background: transparent;
+      transition: background 0.4s;
+    }
+    nav.scrolled { background: rgba(13, 27, 42, 0.95); backdrop-filter: blur(8px); }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .logo span { color: var(--cream); }
+
+    nav a.cta-nav {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 0.5rem 1.2rem;
+      transition: background 0.25s, color 0.25s;
+    }
+    nav a.cta-nav:hover { background: var(--gold); color: var(--navy); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 12vh 5vw 8vh;
+      position: relative;
+    }
+
+    /* Broadcast signal line — the signature element */
+    .signal-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-lt) 50%, var(--gold) 70%, transparent 100%);
+      opacity: 0;
+      animation: pulse-signal 2.4s ease forwards 0.6s;
+      pointer-events: none;
+    }
+    @keyframes pulse-signal {
+      0%   { opacity: 0; transform: scaleX(0); }
+      30%  { opacity: 0.6; transform: scaleX(1); }
+      70%  { opacity: 0.6; transform: scaleX(1); }
+      100% { opacity: 0; transform: scaleX(1); }
+    }
+    @media (prefers-reduced-motion: reduce) { .signal-line { animation: none; } }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fade-up 0.8s ease forwards 1.2s;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6.5vw, 6rem);
+      font-weight: 700;
+      line-height: 1.05;
+      max-width: 14ch;
+      color: var(--cream);
+      opacity: 0;
+      animation: fade-up 0.9s ease forwards 1.4s;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+      color: var(--grey);
+      max-width: 48ch;
+      opacity: 0;
+      animation: fade-up 0.9s ease forwards 1.7s;
+    }
+
+    .hero-cta {
+      margin-top: 2.8rem;
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 0.9rem 2.2rem;
+      transition: background 0.25s;
+      opacity: 0;
+      animation: fade-up 0.9s ease forwards 2s;
+    }
+    .hero-cta:hover { background: var(--gold-lt); }
+
+    .hero-stat-row {
+      position: absolute;
+      bottom: 6vh;
+      left: 5vw;
+      display: flex;
+      gap: 4rem;
+      opacity: 0;
+      animation: fade-up 0.9s ease forwards 2.2s;
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-top: 0.3rem;
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── DIVIDER ── */
+    .gold-rule {
+      width: 5vw;
+      min-width: 3rem;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto;
+    }
+
+    /* ── ABOUT SECTION ── */
+    section.about {
+      padding: 10vh 5vw;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 6vw;
+      align-items: start;
+    }
+
+    .about-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.2;
+      color: var(--cream);
+      position: sticky;
+      top: 8rem;
+    }
+    .about-headline em { color: var(--gold); font-style: italic; }
+
+    .about-body p {
+      color: #B0B8C4;
+      font-size: 1.025rem;
+      margin-bottom: 1.6rem;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+
+    /* ── EXPERTISE STRIP ── */
+    section.expertise {
+      background: #0A1520;
+      padding: 8vh 5vw;
+    }
+    .expertise-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .expertise-inner .section-eyebrow { text-align: center; }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+      margin-top: 4rem;
+    }
+
+    .exp-card {
+      background: #111F2E;
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.3s ease;
+    }
+    .exp-card:hover { background: #152130; }
+    .exp-card:hover::before { height: 100%; }
+
+    .exp-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-bottom: 1.2rem;
+      opacity: 0.7;
+    }
+    .exp-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+    .exp-desc {
+      font-size: 0.875rem;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    section.contact {
+      padding: 10vh 5vw;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--cream);
+      margin-bottom: 1.2rem;
+    }
+    .contact h2 em { color: var(--gold); font-style: italic; }
+    .contact p {
+      color: var(--grey);
+      font-size: 1rem;
+      max-width: 44ch;
+      margin: 0 auto 2.5rem;
+    }
+    .contact a.btn {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.2rem;
+      transition: background 0.25s, color 0.25s;
+    }
+    .contact a.btn:hover { background: var(--gold); color: var(--navy); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #1A2E42;
+      padding: 2.5rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer .logo { font-size: 0.95rem; }
+    footer p {
+      font-size: 0.75rem;
+      color: var(--grey);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-headline { position: static; }
+      .hero-stat-row { gap: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-stat-row { flex-direction: column; gap: 1.2rem; bottom: 4vh; }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-inner">
-            <div class="logo-mark">SWAI</div>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#process">Vorgehen</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="eyebrow">// KI-Beratung × Umsetzung</div>
-            <h1>
-                Wir machen<br>
-                <span class="highlight">KI nutzbar</span>
-            </h1>
-            <p class="lead">
-                Keine Powerpoints. Keine Buzzwords. Wir sind zwei KI-Berater mit einem klaren Fokus: 
-                Umsetzung. Von der Strategie bis zum laufenden System – mit n8n, Odoo und jahrelanger 
-                Erfahrung in Versicherung und Handel.
-            </p>
-            <div class="cta-group">
-                <a href="#kontakt" class="btn btn-primary">Projekt starten</a>
-                <a href="#services" class="btn btn-secondary">Was wir tun</a>
-            </div>
-        </div>
-    </section>
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#" class="logo">RB<span>Consulting</span></a>
+    <a href="#contact" class="cta-nav">Get in Touch</a>
+  </nav>
 
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat">
-                <div class="stat-value">2</div>
-                <div class="stat-label">KI-Berater</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">10+</div>
-                <div class="stat-label">Jahre Erfahrung</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">100%</div>
-                <div class="stat-label">Umsetzungsfokus</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">AT</div>
-                <div class="stat-label">Made in Austria</div>
-            </div>
-        </div>
-    </section>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="signal-line" aria-hidden="true"></div>
+    <p class="hero-eyebrow">rbconsulting.at &nbsp;·&nbsp; Vienna, Austria</p>
+    <h1>Turning products into <em>television</em> success stories.</h1>
+    <p class="hero-sub">
+      Three decades of international DRTV expertise — from concept to broadcast, from idea to shelf.
+    </p>
+    <a href="#about" class="hero-cta">Discover the expertise</a>
 
-    <section id="services" class="services">
-        <div class="section-header reveal">
-            <h2 class="section-title">Was wir tun</h2>
-            <p class="section-subtitle">
-                Von der Idee zur produktiven Lösung. Wir begleiten euch durch den gesamten Prozess.
-            </p>
-        </div>
-        
-        <div class="service-grid">
-            <div class="service reveal">
-                <div class="service-number">01</div>
-                <h3>KI-Strategie</h3>
-                <p>
-                    Gemeinsam identifizieren wir die Use Cases mit dem größten Impact. 
-                    Keine theoretischen Konzepte – wir fokussieren auf das, was wirklich 
-                    umsetzbar ist und Mehrwert bringt.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">Workshop</span>
-                    <span class="tech-badge">ROI-Analyse</span>
-                    <span class="tech-badge">Roadmap</span>
-                </div>
-            </div>
+    <div class="hero-stat-row" aria-label="Key facts">
+      <div class="stat-item">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Years in DRTV</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">EU & Global</div>
+        <div class="stat-label">Market Reach</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">End-to-End</div>
+        <div class="stat-label">Product Strategy</div>
+      </div>
+    </div>
+  </section>
 
-            <div class="service reveal">
-                <div class="service-number">02</div>
-                <h3>Workflow-Automatisierung</h3>
-                <p>
-                    Mit n8n bauen wir intelligente Workflows, die eure Systeme verbinden. 
-                    Von einfachen Integrationen bis zu komplexen Multi-Step-Prozessen mit 
-                    KI-Integration.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">n8n</span>
-                    <span class="tech-badge">API</span>
-                    <span class="tech-badge">Integration</span>
-                </div>
-            </div>
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <p class="section-eyebrow">About Robert Bartonek</p>
+    <div class="about-grid">
+      <div>
+        <h2 class="about-headline">
+          An industry career built on knowing <em>what sells.</em>
+        </h2>
+      </div>
+      <div class="about-body">
+        <p>
+          For more than three decades, I have been working at the heart of the international DRTV, teleshopping, and infomercial industry. My career began in the early days of direct response television, and over the years I have helped shape, produce, and launch countless successful TV shows, commercials, and product campaigns across Europe and worldwide.
+        </p>
+        <p>
+          My core expertise lies in developing market-ready product concepts, producing high-impact infomercials, and building scalable sales strategies for TV, online, and retail. I work closely with manufacturers, innovators, and distributors to transform strong ideas into profitable consumer products.
+        </p>
+        <p>
+          Throughout my career, I have collaborated with leading teleshopping networks, production companies, and global partners. My work includes product launches, brand building, script development, creative direction, and international distribution.
+        </p>
+        <p>
+          Today, I support companies in bringing their products to market with the same passion as on day one — combining experience, intuition, and a deep understanding of what truly sells.
+        </p>
+      </div>
+    </div>
+  </section>
 
-            <div class="service reveal">
-                <div class="service-number">03</div>
-                <h3>Odoo Implementation</h3>
-                <p>
-                    ERP und CRM, das zu euch passt. Wir konfigurieren, customizen und 
-                    integrieren Odoo so, dass es eure Prozesse optimal unterstützt.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">Odoo</span>
-                    <span class="tech-badge">ERP</span>
-                    <span class="tech-badge">CRM</span>
-                </div>
-            </div>
+  <!-- EXPERTISE -->
+  <section class="expertise" id="expertise">
+    <div class="expertise-inner">
+      <p class="section-eyebrow">What I Bring to Your Product</p>
+      <div class="expertise-grid">
 
-            <div class="service reveal">
-                <div class="service-number">04</div>
-                <h3>Custom KI-Lösungen</h3>
-                <p>
-                    RAG-Systeme, Custom Chatbots, Dokumentenverarbeitung – wir bauen 
-                    maßgeschneiderte KI-Lösungen, die auf eure spezifischen Anforderungen 
-                    zugeschnitten sind.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">LLMs</span>
-                    <span class="tech-badge">RAG</span>
-                    <span class="tech-badge">Vector DB</span>
-                </div>
-            </div>
-
-            <div class="service reveal">
-                <div class="service-number">05</div>
-                <h3>Training & Support</h3>
-                <p>
-                    Wir bringen euer Team auf Speed. Hands-on Trainings, Dokumentation 
-                    und kontinuierlicher Support – auch nach dem Go-Live.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">Training</span>
-                    <span class="tech-badge">Docs</span>
-                    <span class="tech-badge">Support</span>
-                </div>
-            </div>
-
-            <div class="service reveal">
-                <div class="service-number">06</div>
-                <h3>Maintenance & Evolution</h3>
-                <p>
-                    KI entwickelt sich schnell. Wir stellen sicher, dass eure Lösungen 
-                    aktuell bleiben und mit neuen Möglichkeiten wachsen.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">Updates</span>
-                    <span class="tech-badge">Optimization</span>
-                    <span class="tech-badge">Evolution</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="expertise" class="expertise">
-        <div class="section-header reveal">
-            <h2 class="section-title">Unsere Expertise</h2>
-            <p class="section-subtitle">
-                Jahrelange Erfahrung in Schlüsselbranchen kombiniert mit 
-                modernsten KI-Technologien.
-            </p>
+        <div class="exp-card">
+          <svg class="exp-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="32" height="20" rx="2" stroke="#B89B5E" stroke-width="1.5"/>
+            <path d="M15 28v4M25 28v4M11 32h18" stroke="#B89B5E" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 18l5-5 5 5" stroke="#B89B5E" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="exp-title">DRTV & Infomercial Production</div>
+          <p class="exp-desc">High-impact formats built for response. From script to final cut, crafted to convert viewers into buyers.</p>
         </div>
 
-        <div class="expertise-grid">
-            <div class="expertise-item reveal">
-                <span class="expertise-icon">🏛️</span>
-                <h3>Versicherung</h3>
-                <p>
-                    Tiefes Verständnis für Versicherungsprozesse, Compliance-Anforderungen 
-                    und Kundenservice. Wir kennen die Herausforderungen der Branche aus 
-                    erster Hand und wissen, wo KI echten Mehrwert schaffen kann.
-                </p>
-            </div>
-
-            <div class="expertise-item reveal">
-                <span class="expertise-icon">🛒</span>
-                <h3>Handel</h3>
-                <p>
-                    E-Commerce, Retail, Logistik – wir verstehen die Komplexität moderner 
-                    Handelsunternehmen. Von der Bestandsverwaltung bis zur Customer Journey: 
-                    Wir automatisieren, wo es Sinn macht.
-                </p>
-            </div>
-
-            <div class="expertise-item reveal">
-                <span class="expertise-icon">⚙️</span>
-                <h3>n8n Expertise</h3>
-                <p>
-                    Workflow-Automatisierung ist unsere Kernkompetenz. Mit n8n verbinden 
-                    wir eure Systeme, automatisieren repetitive Aufgaben und integrieren 
-                    KI nahtlos in bestehende Prozesse.
-                </p>
-            </div>
-
-            <div class="expertise-item reveal">
-                <span class="expertise-icon">📊</span>
-                <h3>Odoo Mastery</h3>
-                <p>
-                    Als Odoo-Spezialisten implementieren wir ERP und CRM-Lösungen, 
-                    die perfekt auf eure Bedürfnisse abgestimmt sind. Von der Installation 
-                    bis zur individuellen Anpassung.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="process" class="process">
-        <div class="section-header reveal">
-            <h2 class="section-title">Unser Vorgehen</h2>
-            <p class="section-subtitle">
-                Strukturiert, pragmatisch, ergebnisorientiert.
-            </p>
+        <div class="exp-card">
+          <svg class="exp-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="14" stroke="#B89B5E" stroke-width="1.5"/>
+            <path d="M20 6C20 6 14 12 14 20s6 14 6 14M20 6c0 0 6 6 6 14s-6 14-6 14M6 20h28" stroke="#B89B5E" stroke-width="1.5"/>
+          </svg>
+          <div class="exp-title">International Distribution</div>
+          <p class="exp-desc">Deep relationships with European and global teleshopping networks, retail buyers, and media partners.</p>
         </div>
 
-        <div class="process-steps">
-            <div class="step reveal">
-                <div class="step-number">01</div>
-                <div class="step-content">
-                    <h3>Discovery</h3>
-                    <p>
-                        Wir verstehen euer Business, eure Prozesse und eure Ziele. 
-                        In Workshops identifizieren wir gemeinsam die vielversprechendsten 
-                        Use Cases und priorisieren nach Impact.
-                    </p>
-                </div>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">02</div>
-                <div class="step-content">
-                    <h3>Proof of Concept</h3>
-                    <p>
-                        Wir bauen schnell einen funktionierenden Prototyp. So könnt ihr 
-                        frühzeitig sehen, wie die Lösung aussieht und funktioniert – 
-                        und wir können gemeinsam iterieren.
-                    </p>
-                </div>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">03</div>
-                <div class="step-content">
-                    <h3>Implementation</h3>
-                    <p>
-                        Wir setzen die finale Lösung um – robust, skalierbar und 
-                        integriert in eure bestehende Infrastruktur. Mit Testing, 
-                        Dokumentation und allem, was dazugehört.
-                    </p>
-                </div>
-            </div>
-
-            <div class="step reveal">
-                <div class="step-number">04</div>
-                <div class="step-content">
-                    <h3>Go-Live & Support</h3>
-                    <p>
-                        Wir begleiten euch beim Rollout, schulen euer Team und bleiben 
-                        auch nach dem Go-Live an eurer Seite. Langfristige Partnerschaft 
-                        statt einmaliges Projekt.
-                    </p>
-                </div>
-            </div>
+        <div class="exp-card">
+          <svg class="exp-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 30L20 10l12 20H8z" stroke="#B89B5E" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M20 10v20M14 22h12" stroke="#B89B5E" stroke-width="1.5"/>
+          </svg>
+          <div class="exp-title">Product Concept Development</div>
+          <p class="exp-desc">Identifying and shaping products with genuine market potential — before a single euro is spent on production.</p>
         </div>
-    </section>
 
-    <section id="kontakt" class="cta">
-        <div class="cta-content">
-            <h2>Bereit loszulegen?</h2>
-            <p>
-                Lass uns reden. Unverbindlich, direkt, ehrlich.
-            </p>
-            <div class="cta-group">
-                <a href="mailto:hallo@smartworkwithai.at" class="btn btn-primary">
-                    Projekt anfragen
-                </a>
-            </div>
-            <div class="contact-info">
-                <a href="mailto:hallo@smartworkwithai.at" class="contact-item">
-                    hallo@smartworkwithai.at
-                </a>
-                <a href="https://smartworkwithai.at" class="contact-item">
-                    smartworkwithai.at
-                </a>
-            </div>
+        <div class="exp-card">
+          <svg class="exp-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="10" width="28" height="20" rx="2" stroke="#B89B5E" stroke-width="1.5"/>
+            <path d="M13 18h14M13 22h8" stroke="#B89B5E" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="exp-title">Script & Creative Direction</div>
+          <p class="exp-desc">Messaging that resonates. Narratives engineered for trust, urgency, and direct response at scale.</p>
         </div>
-    </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">SMART WORK WITH AI</div>
-            <div class="footer-text">
-                © 2025 — Made in Austria 🇦🇹
-            </div>
+        <div class="exp-card">
+          <svg class="exp-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 32V20l12-12 12 12v12" stroke="#B89B5E" stroke-width="1.5" stroke-linejoin="round"/>
+            <rect x="16" y="24" width="8" height="8" stroke="#B89B5E" stroke-width="1.5"/>
+          </svg>
+          <div class="exp-title">Brand Building</div>
+          <p class="exp-desc">Building product brands that travel — from teleshopping debuts to retail rollouts across multiple markets.</p>
         </div>
-    </footer>
 
-    <script>
-        // Scroll reveal
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealOnScroll = () => {
-            revealElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('active');
-                }
-            });
-        };
+        <div class="exp-card">
+          <svg class="exp-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 8v24M8 20h24" stroke="#B89B5E" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="5" stroke="#B89B5E" stroke-width="1.5"/>
+          </svg>
+          <div class="exp-title">Sales Strategy & Go-to-Market</div>
+          <p class="exp-desc">Scalable multi-channel strategies spanning TV, online, and retail — with the track record to back them up.</p>
+        </div>
 
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
+      </div>
+    </div>
+  </section>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="gold-rule" style="margin: 0 auto 3rem;"></div>
+    <h2>Let's bring your product <em>to air.</em></h2>
+    <p>Whether you have an idea at concept stage or a product ready for market — I would be glad to hear from you.</p>
+    <a href="mailto:office@rbconsulting.at" class="btn">office@rbconsulting.at</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="logo">RB<span>Consulting</span></a>
+    <p>© 2025 Robert Bartonek · rbconsulting.at · Vienna, Austria</p>
+  </footer>
+
+  <script>
+    // Sticky nav on scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Intersection observer for section fade-ins
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.exp-card, .about-body p').forEach(el => {
+      el.style.cssText += 'opacity:0; transform:translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease;';
+      observer.observe(el);
+    });
+  </script>
+
 </body>
 </html>
